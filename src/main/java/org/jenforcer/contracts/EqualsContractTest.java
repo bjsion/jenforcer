@@ -68,6 +68,7 @@ public abstract class EqualsContractTest<T> implements Testable<T>
      *
      * @throws Exception if a test value cannot be created
      */
+    @SuppressWarnings("ReferenceEquality") // Identity checks ensure the factories return distinct instances.
     @BeforeAll
     protected void setup() throws Exception
     {

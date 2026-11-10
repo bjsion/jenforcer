@@ -101,7 +101,7 @@ public abstract class SerializabilityContractTest<T extends Serializable>
     @SuppressWarnings("unchecked")
     private T deserialize(final byte[] bytes) throws ClassNotFoundException, IOException
     {
-        try (final ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
+        try (ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
                 ObjectInputStream ois = new ObjectInputStream(bais))
         {
             return (T) ois.readObject();

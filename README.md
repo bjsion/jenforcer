@@ -130,16 +130,21 @@ class ProductEqualsContractTest extends EqualsContractTest<Product>
 Jenforcer supplies the test methods; the subclass provides sample values that
 should be equal and values that should not be equal to them.
 
-## Test execution
+## Build and quality checks
 
-Run all tests like: 
+Run tests and the release quality checks with:
 ```sh
-mvn test
+./mvnw verify
 ```
 
-or a single contract test, with:
+The verification build runs Error Prone during compilation, then Checkstyle,
+PMD, and SpotBugs. Checkstyle and PMD violations and high-priority SpotBugs
+findings fail the build. JaCoCo writes a coverage report to
+`target/site/jacoco/`; no minimum coverage threshold is enforced yet.
+
+Run a single contract test without the full verification checks with:
 ```sh
-mvn -Dtest=ProductEqualsContractTest test
+./mvnw -Dtest=ProductEqualsContractTest test
 ```
 
 For Gradle, add the dependencies and enable the JUnit Platform in
